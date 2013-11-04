@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	<application>
+		<message-bundle>resources.application</message-bundle>
+		<locale-config>
+			<default-locale>en</default-locale>
+		</locale-config>
+	</application>
+
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/Search.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/NotLoggedIn/SearchResults.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/NotLoggedIn/IndirectSearchResults.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/SearchResults.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/NotLoggedIn/bookingNotRegistered.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/NotLoggedIn/IndirectSearchResults.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/IndirectSearchResults.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/NotLoggedIn/bookingNotRegistered.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/bookingNotRegistered.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>nextPassenger</from-outcome>
+			<to-view-id>/NotLoggedIn/nextPassenger.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>confirmationScreen</from-outcome>
+			<to-view-id>/NotLoggedIn/ConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/NotLoggedIn/IndirectConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/nextPassenger.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>nextPassenger</from-outcome>
+			<to-view-id>/NotLoggedIn/nextPassenger.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>confirmationScreen</from-outcome>
+			<to-view-id>/NotLoggedIn/ConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/NotLoggedIn/IndirectConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/ConfirmationScreen.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>proceedToPayment</from-outcome>
+			<to-view-id>/NotLoggedIn/PaymentForm.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/IndirectConfirmationScreen.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>proceedToPayment</from-outcome>
+			<to-view-id>/NotLoggedIn/PaymentForm.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/PaymentForm.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>displayConfirmation</from-outcome>
+			<to-view-id>/NotLoggedIn/DisplayConfirmation.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/NotLoggedIn/BookingFailure.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/Registration.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/NotLoggedIn/RegistrationConfirmation.xhtml</to-view-id>
+		</navigation-case>
+		
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/NotLoggedIn/Login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/LoggedIn/MyProfile.xhtml</to-view-id>
+		</navigation-case>
+		
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/ChangePassword.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/LoggedIn/MyProfile.xhtml</to-view-id>
+		</navigation-case>
+		
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/EditProfile.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>saved</from-outcome>
+			<to-view-id>/LoggedIn/MyProfile.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>notSaved</from-outcome>
+			<to-view-id>/LoggedIn/MyProfile.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/Search.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/LoggedIn/SearchResults.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/LoggedIn/IndirectSearchResults.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/SearchResults.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>confirmationScreen</from-outcome>
+			<to-view-id>/LoggedIn/ConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/LoggedIn/IndirectSearchResults.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>nextPassenger</from-outcome>
+			<to-view-id>/LoggedIn/nextPassenger.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/IndirectSearchResults.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>indirectconfirmationScreen</from-outcome>
+			<to-view-id>/LoggedIn/IndirectConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>nextPassenger</from-outcome>
+			<to-view-id>/LoggedIn/nextPassenger.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/nextPassenger.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>nextPassenger</from-outcome>
+			<to-view-id>/LoggedIn/nextPassenger.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>confirmationScreen</from-outcome>
+			<to-view-id>/LoggedIn/ConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indirect</from-outcome>
+			<to-view-id>/LoggedIn/IndirectConfirmationScreen.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/ConfirmationScreen.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>proceedToPayment</from-outcome>
+			<to-view-id>/LoggedIn/PaymentForm.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/IndirectConfirmationScreen.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>proceedToPayment</from-outcome>
+			<to-view-id>/LoggedIn/PaymentForm.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/LoggedIn/PaymentForm.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>displayConfirmation</from-outcome>
+			<to-view-id>/LoggedIn/DisplayConfirmation.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/LoggedIn/BookingFailure.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/NotLoggedIn/home.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>search</from-outcome>
+			<to-view-id>/LoggedIn/Search.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+</faces-config>

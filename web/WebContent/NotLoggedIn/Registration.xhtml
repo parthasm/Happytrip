@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/templates/template.xhtml">
+		
+		<ui:define name="title">Registration</ui:define>
+		
+		<ui:define name="heading">Registration Form</ui:define>
+		
+		<ui:define name="content">
+		<h3 align="center">Fields marked with * are compulsory</h3>
+	<h:form prependId="false">
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Full Name*"></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.name}" 
+			required="true" 
+			requiredMessage="Kindly enter your full name" 
+			id="fullName"></h:inputText>
+			<h:message for="fullName"/>
+			
+			<h:outputLabel value="Email Id*"></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.email}"
+			id="email"
+			required="true"
+			requiredMessage="Kindly enter your email id"></h:inputText>
+			<h:message for="email"/>
+			
+			<h:outputLabel value="Password*"></h:outputLabel>
+			<h:inputSecret value="#{registrationBean.user.password}"
+			id="password"
+			required="true"
+			requiredMessage="Kindly enter your password"></h:inputSecret>
+			<h:message for="password"/>
+			
+			<h:outputLabel value="Gender"></h:outputLabel>
+			<h:selectOneRadio value="#{registrationBean.user.gender}" id="gender" >
+				<f:selectItems value="#{registrationBean.user.genders}"></f:selectItems>
+			</h:selectOneRadio>
+			<h:message for="gender"/>
+			
+			<h:outputLabel value="Date of Birth(Format:MM/DD/YY)"></h:outputLabel>
+			
+			<p:calendar value="#{registrationBean.user.dob}" id="popupButtonCal" showOn="button" 
+				/>  
+          
+           
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:message for="popupButtonCal"/>
+				<h:outputLabel value="     "></h:outputLabel>
+				
+			<h:outputLabel value="Nationality"></h:outputLabel>
+			<h:selectOneMenu value="#{registrationBean.user.nationality}"
+				id="nationality"
+				>
+				<f:selectItems value="#{registrationBean.user.address.countries}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="nationality"/>
+			
+			<h:outputLabel value="Address"></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.address.addr1}" 
+			id="address1"
+			></h:inputText>
+			<h:message for="address1"/>
+			
+			<h:outputLabel></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.address.addr2}" 
+			id="address2"
+			></h:inputText>
+			<h:message for="address2"/>
+			
+			<h:outputLabel value="Country"></h:outputLabel>
+			<h:selectOneMenu value="#{registrationBean.user.address.country}"
+				immediate="true" onclick="submit()"
+				valueChangeListener="#{registrationBean.switchState}"
+				id="country">
+				<f:selectItems value="#{registrationBean.user.address.countries}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="country"/>
+			
+			<h:outputLabel value="State"></h:outputLabel>
+			<h:selectOneMenu value="#{registrationBean.user.address.state}"
+				immediate="true" onclick="submit()"
+				valueChangeListener="#{registrationBean.switchCity}"
+				id="state"
+				>
+				<f:selectItems value="#{registrationBean.user.address.states}"
+					var="state" itemLabel="#{state.stateId}"
+					itemValue="#{state.stateName}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="state"/>
+			
+			<h:outputLabel value="City"></h:outputLabel>
+			<h:selectOneMenu value="#{registrationBean.user.address.city}"
+			id="city"
+			>
+				<f:selectItems value="#{registrationBean.user.address.cities}" var="city"
+					itemLabel="#{city.cityId}" 
+					itemValue="#{city.cityName}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="city"/>
+			
+			<h:outputLabel value="Pin Code"></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.address.pin}"
+			id="pinCode"
+			>		
+			</h:inputText>
+			<h:message for="pinCode"/>
+			
+			<h:outputLabel value="Mobile No."></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.mobileNo}"
+			id="mobileNumber"
+			>
+			</h:inputText>
+			<h:message for="mobileNumber"/>
+			
+			<h:outputLabel value="Other Contact No."></h:outputLabel>
+			<h:inputText value="#{registrationBean.user.address.otherContact}"
+			id="otherNumber"
+			>
+			</h:inputText>
+			<h:message for="otherNumber"/>
+			
+			
+			<h:outputLabel></h:outputLabel>
+			<h:commandButton value="Register" action="#{registrationBean.register}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+ </ui:define>
+ </ui:composition>

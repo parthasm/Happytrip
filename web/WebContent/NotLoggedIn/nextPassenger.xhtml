@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">Booking</ui:define>
+		
+		<ui:define name="heading">Kindly enter the details of Passenger #{(bookingBean.counter)+1}</ui:define>
+
+		<ui:define name="content">
+	
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Name"></h:outputLabel>
+			<h:inputText value="#{bookingBean.additionalPassenger.name}" id="name" required="true" requiredMessage="Enter Name"></h:inputText>
+			<h:message for="name"/>
+			
+			<h:outputLabel value="Gender" ></h:outputLabel>
+			<h:selectOneRadio value="#{bookingBean.additionalPassenger.gender}" id="gender" required="true" requiredMessage="Please Select gender">
+				<f:selectItems value="#{bookingBean.additionalPassenger.genders}"></f:selectItems>
+			</h:selectOneRadio>
+			<h:message for="gender"/>
+			
+			<h:outputLabel value="Date of Birth (Format:MM/DD/YY)"></h:outputLabel>
+			
+			<p:calendar value="#{bookingBean.additionalPassenger.dob}" id="popupButtonCal" showOn="button" 
+				required="true"
+				requiredMessage="Kindly enter the date of birth"/>  
+          
+             
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:message for="popupButtonCal"/>
+			<h:outputLabel value="     "></h:outputLabel>
+			<h:outputLabel value="     "></h:outputLabel>
+			<h:commandButton value="Next" action="#{bookingBean.book}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+</ui:define>
+ </ui:composition>

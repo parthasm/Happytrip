@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/template.xhtml">
+		
+		<ui:define name="title">Home</ui:define>
+		
+		<ui:define name="heading">Welcome To HappyTrip!</ui:define>
+		
+		<ui:define name="content">
+<h:form prependId="false">
+
+ <br/>
+  <br/>
+  <h:panelGrid>
+ 
+  	<h:commandLink value="Search For Flights" action="/NotLoggedIn/Search.xhtml"></h:commandLink>
+  	<br/>
+  	<h:commandLink value="Login" action="/NotLoggedIn/Login.xhtml"></h:commandLink>
+  	<br/>
+  	<h:commandLink value="New User? Register!" action="/NotLoggedIn/Registration.xhtml"></h:commandLink>
+  <br/>
+  </h:panelGrid>
+  </h:form>
+ </ui:define>
+		</ui:composition>
+  

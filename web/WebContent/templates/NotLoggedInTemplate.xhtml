@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:p="http://primefaces.org/ui" >
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<link href="../css/Datatable.css" rel="stylesheet" type="text/css"/>
+	<title>
+		<ui:insert name="title"></ui:insert>
+	</title>
+</h:head>
+
+<body bgcolor="#eeeeff">
+
+
+<p:layout fullPage="true">  
+  
+     <p:layoutUnit position="north" size="160" header="Hi" resizable="true" closable="true" collapsible="true">  
+       <h:panelGrid columns="3">
+       <h:form>
+       <h:commandLink action="/NotLoggedIn/home.xhtml">
+       <h:graphicImage  url="/templates/logo.jpg" style="height: 55px; width: 72px; "></h:graphicImage>
+       </h:commandLink></h:form>
+        <h2 align="center"><ui:insert name="heading"></ui:insert></h2>  
+        </h:panelGrid>
+    </p:layoutUnit>  
+  
+    <p:layoutUnit position="south" size="180" header="&copy;CopyRight" resizable="true" closable="true" collapsible="true">  
+        <p align="center">  This website is a registered trademark of HappyTrip.com </p>  
+       
+        <p align="center">  For any doubts kindly contact Somya Bhargava Email-sbsomyabhargava@happytrip.com</p>
+    </p:layoutUnit>  
+  
+    
+  	<p:layoutUnit position="east" size="280" header="HappyTrip" resizable="true" closable="true" collapsible="true">  
+       <h:graphicImage url="/templates/Aeroplane.jpg" style="width: 261px; height: 292px; "></h:graphicImage> 
+    </p:layoutUnit>  
+  <p:layoutUnit position="west" size="120" header="HappyTrip" resizable="true" >  
+       <h:form><p align="center"><h:commandLink value="Home" action="/NotLoggedIn/home.xhtml"></h:commandLink></p></h:form>
+    </p:layoutUnit>   
+  
+    <p:layoutUnit position="center">  
+
+	<table border="0" align="center">
+	
+		
+	
+	
+	
+	<tr><td>
+		<ui:insert name="content"></ui:insert>
+	</td>
+	
+	</tr>
+	</table>
+	</p:layoutUnit>  
+  
+</p:layout> 
+</body>
+</html>

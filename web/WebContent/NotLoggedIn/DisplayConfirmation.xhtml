@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">DisplayConfirmation</ui:define>
+		
+		<ui:define name="heading">Display Confirmation</ui:define>
+		
+		<ui:define name="content">
+		<h3 align="center"> Your Ticket with reference no. #{bookingBean.bookRefNo} has been booked!</h3>
+		<p align="right">
+		<h:form><h:commandLink><h:graphicImage url="/LoggedIn/save.jpeg" style="width: 36px; height: 27px; ">
+		</h:graphicImage></h:commandLink>
+		<h:commandLink ><h:graphicImage url="/LoggedIn/printer1.png" style="width: 30px; height: 27px; ">
+		</h:graphicImage></h:commandLink></h:form>
+		</p>
+		
+		<h:dataTable var="passenger" value="#{bookingBean.listUser}"
+		styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+		>
+		
+			<h:column>
+			<f:facet name="header">Name Of Passenger</f:facet>
+			#{passenger.name}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Date of Birth Of Passenger</f:facet>
+			#{passenger.dobString}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Gender Of Passenger</f:facet>
+			#{passenger.gender}
+		</h:column>
+		
+		</h:dataTable>
+ </ui:define>
+		</ui:composition>
+  

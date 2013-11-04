@@ -1,0 +1,86 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/templates/LoggedInTemplate.xhtml">
+		
+		<ui:define name="title">Search</ui:define>
+		
+		<ui:define name="heading">Search For Flights</ui:define>
+		
+		<ui:define name="content">
+			<h:form prependId="false">
+			
+		<h:panelGrid columns="3">
+			
+				
+			<h:outputLabel value=" From City:"></h:outputLabel>
+			<h:selectOneMenu value="#{loginBean.profileBean.searchBean.fromCity}">
+				<f:selectItems value="#{loginBean.profileBean.searchBean.cities}"
+				var="city"
+				itemLabel="#{city.cityname}"
+				 itemValue="#{city.cityname}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:outputLabel value="     "></h:outputLabel>
+			
+			<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+			<h:outputLabel value="     "></h:outputLabel>
+			
+			<h:outputLabel value=" To City:"></h:outputLabel>
+			<h:selectOneMenu value="#{loginBean.profileBean.searchBean.toCity}" id="tocity">
+				<f:selectItems value="#{loginBean.profileBean.searchBean.cities}"
+				var="city"
+				itemLabel="#{city.cityname}"
+				 itemValue="#{city.cityname}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="tocity"/>
+			
+			<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+			
+			<h:outputLabel value="Date of Journey (Format:MM/DD/YY)"></h:outputLabel>
+				<p:calendar value="#{loginBean.profileBean.searchBean.dateOfJourney}" id="popupButtonCal" showOn="button" 
+				required="true"
+				requiredMessage="Kindly enter the date of journey"/>  
+          
+            
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:message for="popupButtonCal"/>
+				
+				
+				
+				<h:outputLabel value="     "></h:outputLabel>
+			
+			<h:outputLabel value="Number of Seats:"></h:outputLabel>
+				<h:selectOneMenu value="#{loginBean.profileBean.searchBean.selectedNumberOfSeats}" id="noofseats">
+				<f:selectItems value="#{loginBean.profileBean.searchBean.numberOfSeats}"></f:selectItems>
+				</h:selectOneMenu>
+				<h:message for="noofseats"/>
+				
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+			
+			<h:outputLabel value="Class:"></h:outputLabel>
+				<h:selectOneMenu value="#{loginBean.profileBean.searchBean.selectedClass}" id="sclass">
+				<f:selectItems value="#{loginBean.profileBean.searchBean.classes}"></f:selectItems>
+				</h:selectOneMenu>
+				<h:message for="sclass"/>
+				
+				
+				<h:outputLabel  id="noflight"  value="     "></h:outputLabel>
+				<h:message for="noflight" style="color:red;margin:8px;"/>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				
+			<h:commandButton value="Search Flights" action="#{loginBean.profileBean.searchBean.searchFlights}"></h:commandButton>
+		</h:panelGrid>	
+	</h:form>
+		
+		</ui:define>
+		</ui:composition>

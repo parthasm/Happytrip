@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">Login</ui:define>
+		
+		<ui:define name="heading">Login here:</ui:define>
+		
+		<ui:define name="content">
+<h:form prependId="false">
+<h:message for="displAtTop"/>
+  <h:panelGrid columns="3">
+  <h:outputLabel value="Email Id"></h:outputLabel>
+  <h:inputText
+   value="#{loginBean.emailid}"
+   id="email" 
+   required="true"
+    requiredMessage="Kindly enter your email Id"></h:inputText>
+  <h:message for="email"/>
+  
+  
+  <h:outputLabel value="Password"></h:outputLabel>
+   <h:inputSecret
+   value="#{loginBean.password}"
+    id="password"
+     required="true" 
+     requiredMessage="Kindly enter your password"></h:inputSecret>
+   <h:message for="password"/>
+   
+ <h:selectBooleanCheckbox id="displAtTop" > 
+     </h:selectBooleanCheckbox>Remember me
+     <h:outputLabel></h:outputLabel>
+     <h:outputLabel></h:outputLabel> 
+  <h:outputLabel></h:outputLabel>
+    <h:commandButton value="Login" action="#{loginBean.login}"></h:commandButton>
+  <h:outputLabel></h:outputLabel>
+  </h:panelGrid>
+  </h:form>
+  <h:form prependId="false">
+  <h:panelGrid columns="2">
+  <h:outputLabel value="Forgot Password?"></h:outputLabel>
+  <h:commandLink value="Click Here" action="/NotLoggedIn/ForgotPassword.xhtml"></h:commandLink>
+  
+  </h:panelGrid>
+  
+  </h:form>
+  
+ </ui:define>
+		</ui:composition>
+  

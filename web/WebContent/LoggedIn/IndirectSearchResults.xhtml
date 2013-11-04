@@ -1,0 +1,105 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/LoggedInTemplate.xhtml">
+		
+		<ui:define name="title">IndirectSearchResults</ui:define>
+		
+		<ui:define name="heading">Available Indirect Flights</ui:define>
+		
+		<ui:define name="content">
+			<h:form prependId="false">
+			<h:outputLabel id="msg"></h:outputLabel>
+			<h:message for="msg" style="color:red;margin:8px;"/>
+		<h:dataTable var="doubleflightRoute" binding="#{loginBean.profileBean.searchBean.indirectFlightBean.indiHdt}"
+		value="#{loginBean.profileBean.searchBean.indirectFlightBean.dispFlightRoutes}"
+		styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+		>
+		
+		<h:column>
+        <h:commandLink value="Select" actionListener="#{loginBean.profileBean.searchBean.indirectFlightBean.selectIndirectFlight}">
+        </h:commandLink>
+    </h:column>
+		
+		
+		<h:column>
+			<f:facet name="header">From</f:facet>
+			#{loginBean.profileBean.searchBean.fromCity}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Intermediate</f:facet>
+			#{doubleflightRoute[0].routesAirline.city1.cityname}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">To City</f:facet>
+			#{loginBean.profileBean.searchBean.toCity}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Date of Journey</f:facet>
+			#{loginBean.profileBean.searchBean.dateOfJourneyString}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">1st Flight No.</f:facet>
+			#{doubleflightRoute[0].flight.flightname}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">1st Airline Name</f:facet>
+			#{doubleflightRoute[0].flight.airline.airlinename}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Departure from Starting Point</f:facet>
+			#{doubleflightRoute[0].departuretime}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Arrival at Intermediate</f:facet>
+			#{doubleflightRoute[0].arrivaltime}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">2nd Flight No.</f:facet>
+			#{doubleflightRoute[1].flight.flightname}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">2nd Airline Name</f:facet>
+			#{doubleflightRoute[1].flight.airline.airlinename}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Departure from Intermediate</f:facet>
+			#{doubleflightRoute[1].departuretime}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Arrival at Destination</f:facet>
+			#{doubleflightRoute[1].arrivaltime}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Total Cost per person</f:facet>
+			#{(doubleflightRoute[0].costperticket)+(doubleflightRoute[1].costperticket)}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Status</f:facet>
+			#{loginBean.profileBean.searchBean.indirectFlightBean.flightStatusMap[doubleflightRoute[0].flightrouteid]}
+		</h:column>
+		
+	</h:dataTable>
+	
+	<h:commandButton value="Proceed to Booking" action="#{loginBean.profileBean.bookIndirectLoggedIn}"></h:commandButton>
+	</h:form>
+	
+		</ui:define>
+		</ui:composition>

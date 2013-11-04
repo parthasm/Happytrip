@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">Confirmation</ui:define>
+		
+		<ui:define name="heading">Kindly Confirm The Details Given Below</ui:define>
+		
+		<ui:define name="content">
+		<h3 align="center"> Indirect Flight Details</h3>
+		
+		<h:form>
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="From :"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.fromCity}"></h:outputText>
+			
+			<h:outputLabel value="Intermediate :"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[0].routesAirline.city1.cityname}"></h:outputText>
+			
+			<h:outputLabel value="To :"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.toCity}"></h:outputText>
+			
+			<h:outputLabel value="Date of Travel:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.dateOfJourneyString}"></h:outputText>
+			
+			<h:outputLabel value="First Flight No.:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[0].flight.flightname}"></h:outputText>
+			
+			<h:outputLabel value="First Airline Name:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[0].flight.airline.airlinename}"></h:outputText>
+			
+			<h:outputLabel value="Departure Time from Starting Point:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[0].departuretime}"></h:outputText>
+			
+			<h:outputLabel value="Arrival Time At Intermediate:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[0].arrivaltime}"></h:outputText>
+			
+			<h:outputLabel value="Second Flight No.:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[1].flight.flightname}"></h:outputText>
+			
+			<h:outputLabel value="Second Airline Name:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[1].flight.airline.airlinename}"></h:outputText>
+			
+			<h:outputLabel value="Departure Time from Intermediate:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[1].departuretime}"></h:outputText>
+			
+			<h:outputLabel value="Arrival Time At Destination:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.selectedFlightRoutedouble[1].arrivaltime}"></h:outputText>
+			
+			<h:outputLabel value="Cost of Ticket per person:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.indirectFlightBean.costPerPerson}"></h:outputText>
+			
+			<h:outputLabel value="Date of Booking:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.searchBean.dateOfBookingString}"></h:outputText>
+
+			<h:outputLabel value="Full Name:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.name}"></h:outputText>
+						
+			<h:outputLabel value="Gender:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.gender}"></h:outputText>
+			
+			<h:outputLabel value="Date of Birth:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.dobString}"></h:outputText>
+			
+			<h:outputLabel value="Nationality:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.nationality}"></h:outputText>
+			
+			<h:outputLabel value="Address:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.address.addr1}"></h:outputText>
+			
+			<h:outputLabel></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.address.addr2}"></h:outputText>
+			
+			<h:outputLabel value="City:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.address.city}"></h:outputText>
+			
+			<h:outputLabel value="State:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.state}"></h:outputText>
+			
+			<h:outputLabel value="Country:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.country}"></h:outputText>
+			
+			<h:outputLabel value="PinCode:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.address.pin}"></h:outputText>
+			
+			<h:outputLabel value="Mobile No.:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.mobileNo}"></h:outputText>
+			
+			<h:outputLabel value="Other Contact No.:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.address.otherContact}"></h:outputText>
+			
+			<h:outputLabel value="Email Id:"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.email}"></h:outputText>
+			
+			<h:commandButton value="Proceed To Payment" action="#{bookingBean.proceedToPayment}"></h:commandButton>
+	
+		</h:panelGrid>
+	</h:form>	
+ </ui:define>
+		</ui:composition>
+  

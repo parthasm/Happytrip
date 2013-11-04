@@ -1,0 +1,99 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">SearchResults
+		
+		
+		</ui:define>
+		
+		<ui:define name="heading">Available Flights</ui:define>
+		
+		<ui:define name="content">
+			<h:form prependId="false">
+			<h:outputLabel id="msg"></h:outputLabel>
+			<h:message for="msg" style="color:red;margin:8px;"/>
+		<h:dataTable var="flightRoute" binding="#{bookingBean.searchBean.hdt}"
+		value="#{bookingBean.searchBean.flightRoutes}"
+		styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+		
+		>
+		
+		<h:column>
+        <h:commandLink value="Select" actionListener="#{bookingBean.searchBean.selectFlight}">
+        </h:commandLink>
+    </h:column>
+		
+		
+		<h:column>
+			<f:facet name="header">From City</f:facet>
+			#{bookingBean.searchBean.fromCity}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">To City</f:facet>
+			#{bookingBean.searchBean.toCity}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Date of Journey</f:facet>
+			#{bookingBean.searchBean.dateOfJourneyString}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Flight No.</f:facet>
+			#{flightRoute.flight.flightname}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Airline Name</f:facet>
+			#{flightRoute.flight.airline.airlinename}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Departure</f:facet>
+			#{flightRoute.departuretime}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Arrival</f:facet>
+			#{flightRoute.arrivaltime}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Duration</f:facet>
+			#{bookingBean.searchBean.route.durationinhrs}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Cost per person</f:facet>
+			#{flightRoute.costperticket}
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Status</f:facet>
+			#{bookingBean.searchBean.flightStatusMap[flightRoute.flightrouteid]}
+		</h:column>
+		
+	</h:dataTable>
+	
+	<h:commandButton value="Proceed to Booking" action="#{bookingBean.searchBean.proceedToBooking}"></h:commandButton>
+	</h:form>
+	
+	<h:form prependId="false">
+	
+	<h:panelGrid columns="3">
+		<h:commandLink value="Not satisfied? Search Indirect Flights" action="#{bookingBean.searchBean.searchIndirectFlights}"></h:commandLink>
+		
+		<h:outputLabel id="indirect"></h:outputLabel>
+		
+		<h:message for="indirect"/>
+		</h:panelGrid>
+	</h:form>
+		</ui:define>
+		</ui:composition>

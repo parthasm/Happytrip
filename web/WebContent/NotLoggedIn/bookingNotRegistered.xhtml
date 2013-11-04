@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">Booking</ui:define>
+		
+		<ui:define name="heading">Kindly enter the following details</ui:define>
+		
+		<ui:define name="content">
+	<h:form prependId="false">
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Full Name"></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.name}" 
+			
+			requiredMessage="Kindly enter your full name" 
+			id="fullName"><f:validateRequired for="fullName"></f:validateRequired></h:inputText>
+			<h:message for="fullName"/>
+			
+			<h:outputLabel value="Gender"></h:outputLabel>
+			<h:selectOneRadio value="#{bookingBean.user.gender}" id="gender" required="true" requiredMessage="Kindly select your gender">
+				<f:selectItems value="#{bookingBean.user.genders}"></f:selectItems>
+			</h:selectOneRadio>
+			<h:message for="gender"/>
+			
+			<h:outputLabel value="Date of Birth (Format:MM/DD/YY)"></h:outputLabel>
+			
+			<p:calendar value="#{bookingBean.user.dob}" id="popupButtonCal" showOn="button" 
+				required="true"
+				requiredMessage="Kindly enter your date of birth"/>  
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:outputLabel value="     "></h:outputLabel>
+				<h:message for="popupButtonCal"/>
+			<h:outputLabel value="     "></h:outputLabel>
+			
+			<h:outputLabel value="Nationality"></h:outputLabel>
+			<h:selectOneMenu value="#{bookingBean.user.nationality}"
+				required="true" requiredMessage="Kindly select your nationality"
+				id="nationality"
+				>
+				<f:selectItems value="#{bookingBean.user.address.countries}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="nationality"/>
+			
+			<h:outputLabel value="Address"></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.address.addr1}" 
+			id="address1"
+			required="true"
+			requiredMessage="Kindly enter the 1st line of your address"></h:inputText>
+			<h:message for="address1"/>
+			
+			<h:outputLabel></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.address.addr2}" 
+			id="address2"
+			required="true"
+			requiredMessage="Kindly enter the 2nd line of your address"></h:inputText>
+			<h:message for="address2"/>
+			
+			
+			<h:outputLabel value="Country"></h:outputLabel>
+			<h:selectOneMenu value="#{bookingBean.country}"
+				immediate="true" 
+				required="true"
+				requiredMessage="Kindly select the country"
+				id="country" >
+				 <f:ajax listener="#{bookingBean.switchState}" render="s"></f:ajax> 
+				<f:selectItems value="#{bookingBean.user.address.countries}" > </f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="country"/>
+			
+			<h:outputLabel value="State"></h:outputLabel>
+			<h:selectOneMenu id="s" value="#{bookingBean.state}"
+				immediate="true" 
+				required="true"
+				requiredMessage="Kindly select the state">
+			<f:ajax listener="#{bookingBean.switchCity}" render="c"></f:ajax> 
+				<f:selectItems value="#{bookingBean.states}"
+					var="state" itemLabel="#{state.stateId}"
+					itemValue="#{state.stateName}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="s"/>
+			
+			<h:outputLabel value="City"></h:outputLabel>
+			<h:selectOneMenu id="c" value="#{bookingBean.user.address.city}"
+			required="true"
+			requiredMessage="Kindly select your city">
+				<f:selectItems value="#{bookingBean.cities}" var="city"
+					itemLabel="#{city.cityId}" 
+					itemValue="#{city.cityName}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="c"/>
+			
+			<h:outputLabel value="Pin Code"></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.address.pin}"
+			id="pinCode"
+			required="true"
+			requiredMessage="Kindly enter your pin"
+			validatorMessage="Pin code should be 6 digits"
+			>
+			<f:validateLength minimum="6" maximum="6"></f:validateLength>
+			</h:inputText>
+			<h:message for="pinCode"/>
+			
+			<h:outputLabel value="Mobile No."></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.mobileNo}"
+			id="mobileNumber"
+			required="true"
+			requiredMessage="Kindly enter your mobile number"
+			validatorMessage="Mobile No. should be 10 digits"
+			>
+			<f:validateRegex 
+                   pattern="((?=.*\d).{10,10})"/>
+                   </h:inputText>
+			<h:message for="mobileNumber"/>
+			
+			<h:outputLabel value="Other Contact No."></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.address.otherContact}"
+			id="otherNumber"
+			required="true"
+			requiredMessage="Kindly enter your other contact number"
+			validatorMessage="Other No. should be 10 digits"
+			>
+			<f:validateRegex 
+                   pattern="((?=.*\d).{10,10})"/></h:inputText>
+			<h:message for="otherNumber"/>
+			
+			<h:outputLabel value="Email Id"></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.email}"
+			id="email"
+			required="true"
+			requiredMessage="Kindly enter your email id"></h:inputText>
+			<h:message for="email"/>
+			
+			<h:outputLabel></h:outputLabel>
+			<h:commandButton value="Book" action="#{bookingBean.book}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+ </ui:define>
+ </ui:composition>

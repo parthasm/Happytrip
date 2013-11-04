@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		template="/templates/NotLoggedInTemplate.xhtml">
+		
+		<ui:define name="title">Payment Form:</ui:define>
+		
+		<ui:define name="heading">Kindly provide your Account details</ui:define>
+		
+		<ui:define name="content">
+		<h:form prependId="false">
+	
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Credit Card No."></h:outputLabel>
+			<h:panelGrid columns="4">
+			<h:inputText value="#{bookingBean.user.creditCard.cardNo1}"
+			 id="ccno1"
+			 required="true"
+			 requiredMessage="Kindly enter your credit card number"
+			 validatorMessage="Kindly enter a 4-digit number" style="width: 54px; ">
+			  <f:validateRegex 
+                   pattern="((?=.*\d).{4,4})"/></h:inputText>
+			 <h:inputText value="#{bookingBean.user.creditCard.cardNo2}"
+			 id="ccno2"
+			 required="true"
+			 requiredMessage="Kindly enter your credit card number"
+			 validatorMessage="Kindly enter a 4-digit number" style="width: 54px; ">
+			 <f:validateRegex 
+                   pattern="((?=.*\d).{4,4})"/></h:inputText>
+			 <h:inputText value="#{bookingBean.user.creditCard.cardNo3}"
+			 id="ccno3"
+			 required="true"
+			 requiredMessage="Kindly enter your credit card number"
+			 validatorMessage="Kindly enter a 4-digit number" style="width: 54px; ">
+			  <f:validateRegex 
+                   pattern="((?=.*\d).{4,4})"/></h:inputText>
+			 <h:inputText value="#{bookingBean.user.creditCard.cardNo4}"
+			 id="ccno4"
+			 required="true"
+			 requiredMessage="Kindly enter your credit card number"
+			 validatorMessage="Kindly enter a 4-digit number" style="width: 54px; ">
+			  <f:validateRegex 
+                   pattern="((?=.*\d).{4,4})"/></h:inputText>
+			 </h:panelGrid>
+			 <h:panelGrid columns="4">
+			<h:message for="ccno1"/>
+			<h:message for="ccno2"/>
+			<h:message for="ccno3"/>
+			<h:message for="ccno4"/>
+			 </h:panelGrid>
+			<h:outputLabel value="Card Holder Name"></h:outputLabel>
+			<h:inputText value="#{bookingBean.user.creditCard.name}"
+			id="ccna"
+			required="true"
+			requiredMessage="Kindly enter the name of the account holder on the credit card"></h:inputText>
+			<h:message for="ccna"/>
+			
+			<h:outputLabel value="Select Card Type"></h:outputLabel>
+			<h:selectOneRadio value="#{bookingBean.user.creditCard.type}"
+			id="cct"
+			required="true"
+			requiredMessage="Kindly select a card type">
+				<f:selectItems value="#{bookingBean.user.creditCard.map}"></f:selectItems>
+			</h:selectOneRadio>
+			<h:message for="cct"/>
+			
+			<h:outputLabel value="Expiry date" 
+			></h:outputLabel>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Month"
+				id="exp"></h:outputLabel>
+				<h:outputLabel value="Year"></h:outputLabel>
+				<h:selectOneMenu value="#{bookingBean.user.creditCard.month}">
+					<f:selectItems value="#{bookingBean.user.creditCard.months}"
+						var="month" itemLabel="#{month}" itemValue="#{month}"></f:selectItems>
+				</h:selectOneMenu>
+				<h:selectOneMenu value="#{bookingBean.user.creditCard.year}">
+					<f:selectItems value="#{bookingBean.user.creditCard.years}"
+						var="year" itemLabel="#{year}" itemValue="#{year}"></f:selectItems>
+				</h:selectOneMenu>
+			</h:panelGrid>
+			<h:message for="exp"/>
+			
+			<h:panelGrid>
+				<h:outputLabel value="CVV(3-digit card verification number)"></h:outputLabel>
+				<!-- <img src="/NotLoggedIn/cvv.jpg" style="float: left"/> -->
+			</h:panelGrid>
+			<h:inputSecret value="#{bookingBean.user.creditCard.cvv}"
+			id="cvv"
+			required="true"
+			requiredMessage="Kindly enter the CVV no. of your credit card"
+			validatorMessage="CVV No. can only be a 3-digit number">
+				<f:validateRegex 
+                   pattern="((?=.*\d).{3,3})"/>
+			</h:inputSecret>
+			<h:message for="cvv"/>
+			
+			<h:outputLabel value="Total Amount"></h:outputLabel>
+			<h:outputText value="#{bookingBean.user.creditCard.payment}"></h:outputText>
+			<h:outputLabel></h:outputLabel>
+			<h:commandButton value="Confirm" action="#{bookingBean.pay}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+		
+ </ui:define>
+		</ui:composition>
+  

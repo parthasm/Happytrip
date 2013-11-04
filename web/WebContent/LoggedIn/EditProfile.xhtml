@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/templates/LoggedInTemplate.xhtml">
+		
+		<ui:define name="title">EditProfile</ui:define>
+		
+		<ui:define name="heading">Update Your Details</ui:define>
+		
+		<ui:define name="content">
+		
+		<h:form>
+		
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Full Name"></h:outputLabel>
+			<h:inputText value="#{loginBean.profileBean.user.fullname}" 
+			required="true" 
+			requiredMessage="Name cannot be empty" 
+			id="fullName"></h:inputText>
+			<h:message for="fullName"/>
+			
+			
+			<h:outputLabel value="Gender"></h:outputLabel>
+			<h:selectOneRadio value="#{loginBean.profileBean.user.gender}" id="gender" >
+				<f:selectItems value="#{registrationBean.user.genders}"></f:selectItems>
+			</h:selectOneRadio>
+			<h:message for="gender"/>
+			
+			<h:outputLabel value="Date of Birth(Format:MM/DD/YY)"></h:outputLabel>
+			<p:calendar value="#{loginBean.profileBean.user.dateofbirth}" id="popupButtonCal" showOn="button" 
+				/>  
+				<h:message for="popupButtonCal"/>
+				
+			
+			<h:outputLabel value="Address"></h:outputLabel>
+			<h:inputText value="#{loginBean.profileBean.user.address}" 
+			id="address"
+			></h:inputText>
+			<h:message for="address"/>
+			
+			
+			
+			<h:outputLabel value="Country"></h:outputLabel>
+			<h:selectOneMenu value="#{loginBean.profileBean.user.country}"
+				immediate="true" onclick="submit()"
+				valueChangeListener="#{registrationBean.switchState}"
+				id="country">
+				<f:selectItems value="#{registrationBean.user.address.countries}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="country"/>
+			
+			<h:outputLabel value="State"></h:outputLabel>
+			<h:selectOneMenu value="#{loginBean.profileBean.user.state}"
+				immediate="true" onclick="submit()"
+				valueChangeListener="#{registrationBean.switchCity}"
+				id="state"
+				>
+				<f:selectItems value="#{registrationBean.user.address.states}"
+					var="state" itemLabel="#{state.stateId}"
+					itemValue="#{state.stateName}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="state"/>
+			
+			<h:outputLabel value="City"></h:outputLabel>
+			<h:selectOneMenu value="#{loginBean.profileBean.user.city}"
+			id="city"
+			>
+				<f:selectItems value="#{registrationBean.user.address.cities}" var="city"
+					itemLabel="#{city.cityId}" 
+					itemValue="#{city.cityName}"></f:selectItems>
+			</h:selectOneMenu>
+			<h:message for="city"/>
+			
+			<h:outputLabel value="Pin Code"></h:outputLabel>
+			<h:inputText value="#{loginBean.profileBean.user.pincode}"
+			id="pinCode"
+			>		
+			</h:inputText>
+			<h:message for="pinCode"/>
+			
+			<h:outputLabel value="Mobile No."></h:outputLabel>
+			<h:inputText value="#{loginBean.profileBean.user.mobileno}"
+			id="mobileNumber"
+			>
+			</h:inputText>
+			<h:message for="mobileNumber"/>
+			
+			<h:outputLabel value="Other Contact No."></h:outputLabel>
+			<h:inputText value="#{loginBean.profileBean.user.othercontactinfo}"
+			id="otherNumber"
+			>
+			</h:inputText>
+			<h:message for="otherNumber"/>
+			
+			
+			<h:commandButton value="Save" action="#{loginBean.profileBean.changeProfile}"></h:commandButton>
+			<h:commandButton value="Do not Save" action="#{loginBean.profileBean.doNotChangeProfile}"></h:commandButton>
+		
+		</h:panelGrid>
+		
+		</h:form>
+ </ui:define>
+		</ui:composition>
+  
