@@ -1,5 +1,8 @@
 Happytrip
 =========
+
+A repository with the implemenatation of a flight-booking web application.
+
 Graphical User Interface: JSF v2.0(Java Server Faces) & Managed Beans ; Primefaces; Ajax; 
 
 Business logic: EJB v3.0 (Enterprise Java Beans) 
